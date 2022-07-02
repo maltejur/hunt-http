@@ -108,6 +108,7 @@ struct RoutingHandlerUtils {
         int remainingSize = rangeEnd.to!uint - rangeStart.to!uint + 1;
         if(remainingSize <= 0) {
             warningf("actualSize:%d, remainingSize=%d", fileSize, remainingSize);
+            context.write(cast(byte[])[]);
         } else {
             auto buf = f.rawRead(new ubyte[remainingSize]);
             // response.setContent(buf);
